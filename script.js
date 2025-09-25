@@ -1,14 +1,15 @@
 const myLibrary = [];
 
-function Book(title, author, pages) {
+function Book(title, author, pages, isRead) {
   this.id = crypto.randomUUID();
   this.title = title;
   this.author = author;
   this.pages = pages;
+  this.isRead = isRead;
 }
 
-function addBookToLibrary(title, author, pages) {
-  let newBook = new Book(title, author, pages);
+function addBookToLibrary(title, author, pages, isRead) {
+  let newBook = new Book(title, author, pages, isRead);
   myLibrary.push(newBook);
 }
 
@@ -30,6 +31,10 @@ function displayLibrary() {
     pages.textContent = book.pages;
     row.appendChild(pages);
 
+    const isRead = document.createElement("td");
+    isRead.textContent = book.isRead ? "Yes" : "No";
+    row.appendChild(isRead);
+
     const id = document.createElement("td");
     id.textContent = book.id;
     row.appendChild(id);
@@ -38,10 +43,10 @@ function displayLibrary() {
   })
 }
 
-addBookToLibrary("East of Eden", "John Steinbeck", 730);
-addBookToLibrary("Crime and Punishment", "Fyodor Dostoevsky", 800);
-addBookToLibrary("Atomic Habits", "James Clear", 306);
-addBookToLibrary("Crying in H Mart", "Michelle Zauner", 243);
-addBookToLibrary("The Anthropocene Reviewed", "John Green", 304);
+addBookToLibrary("East of Eden", "John Steinbeck", 730, true);
+addBookToLibrary("Crime and Punishment", "Fyodor Dostoevsky", 800, false);
+addBookToLibrary("Atomic Habits", "James Clear", 306, true);
+addBookToLibrary("Crying in H Mart", "Michelle Zauner", 243, true);
+addBookToLibrary("The Anthropocene Reviewed", "John Green", 304, false);
 
 displayLibrary();
