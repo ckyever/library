@@ -73,6 +73,10 @@ button:hover {
   border: none;
 }
 
+.delete-icon:hover {
+  transform: scale(1.05);
+}
+
 .is-read {
   background-color: var(--read-status-unfinished);
   padding: 4px;
