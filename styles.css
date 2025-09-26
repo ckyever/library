@@ -1,0 +1,16 @@
+:root {
+  --primary-color: #D8BA89;
+  --secondary-color: #FFFFFF;
+}
+
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
