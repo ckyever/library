@@ -58,6 +58,7 @@ button:hover {
   height: 200px;
   box-shadow: var(--light-shadow);
   position: relative;
+  line-height: 1.4;
 }
 
 .delete-cell {
