@@ -90,7 +90,7 @@ const cancelNewBookDialog = document.querySelector("button.cancel-new-book");
 
 addBookButton.addEventListener("click", () => newBookDialog.showModal());
 
-confirmNewBookDialog.addEventListener("submit", (event) => {
+newBookForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const newBookTitle = newBookDialog.querySelector("#title");
   const newBookAuthor = newBookDialog.querySelector("#author");
