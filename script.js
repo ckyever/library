@@ -8,9 +8,17 @@ function Book(title, author, pages, isRead) {
   this.isRead = isRead;
 }
 
+Book.prototype.toggleIsRead = function() {
+  this.isRead = !this.isRead;
+};
+
 function addBookToLibrary(title, author, pages, isRead) {
   let newBook = new Book(title, author, pages, isRead);
   myLibrary.push(newBook);
+}
+
+function getReadStatusText(status) {
+  return status ? "Read" : "Not Read";
 }
 
 const table = document.querySelector(".bookshelf");
@@ -37,9 +45,13 @@ function displayLibrary() {
     pages.textContent = book.pages;
     row.appendChild(pages);
 
-    const isRead = document.createElement("td");
-    isRead.textContent = book.isRead ? "Read" : "Not Read";
-    row.appendChild(isRead);
+    const statusCell = document.createElement("td");
+    const statusButton = document.createElement("button");
+    statusButton.type = "button";
+    statusButton.classList = "is-read";
+    statusButton.textContent = getReadStatusText(book.isRead);
+    statusCell.appendChild(statusButton);
+    row.appendChild(statusCell);
 
     const deleteCell = document.createElement("td");
     const deleteButton = document.createElement("button");
@@ -93,10 +105,16 @@ cancelNewBookDialog.addEventListener("click", () => {
 
 // Handle deletion of books
 tableRows.addEventListener("click", (event) => {
-  if (event.target.matches(".delete")) {
+  let libraryIndex;
+  if (event.target.matches("button.delete")) {
     const rowToDelete = event.target.closest("tr");
-    const libraryIndex = myLibrary.findIndex(book => book.id == rowToDelete.id);
+    libraryIndex = myLibrary.findIndex(book => book.id == rowToDelete.id);
     rowToDelete.remove();
     myLibrary.splice(libraryIndex, 1);
+  } else if (event.target.matches("button.is-read")) {
+    const rowToToggleStatus = event.target.closest("tr");
+    libraryIndex = myLibrary.findIndex(book => book.id == rowToToggleStatus.id);
+    myLibrary[libraryIndex].toggleIsRead();
+    event.target.textContent = getReadStatusText(myLibrary[libraryIndex].isRead);
   }
 })
