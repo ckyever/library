@@ -21,8 +21,7 @@ function getReadStatusText(status) {
   return status ? "Read" : "Not Read";
 }
 
-const table = document.querySelector(".bookshelf");
-const tableRows = table.querySelector("tbody");
+const tableRows = document.querySelector(".bookshelf");
 
 function displayLibrary() {
 
@@ -32,17 +31,18 @@ function displayLibrary() {
   myLibrary.forEach(book => {
     const row = document.createElement("tr");
     row.id = book.id;
+    row.classList = "book"
 
     const title = document.createElement("td");
-    title.textContent = book.title;
+    title.textContent = `${book.title}`;
     row.appendChild(title);
 
     const author = document.createElement("td");
-    author.textContent = book.author;
+    author.textContent = `by ${book.author}`;
     row.appendChild(author);
 
     const pages = document.createElement("td");
-    pages.textContent = book.pages;
+    pages.textContent = `Pages - ${book.pages}`;
     row.appendChild(pages);
 
     const statusCell = document.createElement("td");
