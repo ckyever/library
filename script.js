@@ -69,6 +69,7 @@ displayLibrary();
 // Handle dialog to add new books
 const addBookButton = document.querySelector("button.add-book");
 const newBookDialog = document.querySelector("dialog.new-book");
+const newBookForm = newBookDialog.querySelector(".new-book-form");
 const confirmNewBookDialog = document.querySelector("button.confirm-new-book");
 const cancelNewBookDialog = document.querySelector("button.cancel-new-book");
 
@@ -82,15 +83,14 @@ confirmNewBookDialog.addEventListener("click", (event) => {
   const isFinished = newBookFinished.value === "true"
   addBookToLibrary(newBookTitle.value, newBookAuthor.value, newBookPages.value, isFinished);
   displayLibrary();
-
-  newBookTitle.value = null;
-  newBookAuthor.value = null;
-  newBookPages.value = null;
-  newBookFinished.value = false;
+  newBookForm.reset();
   newBookDialog.close();
   event.preventDefault();
 });
-cancelNewBookDialog.addEventListener("click", () => newBookDialog.close());
+cancelNewBookDialog.addEventListener("click", () => {
+  newBookDialog.close();
+  newBookForm.reset();
+});
 
 // Handle deletion of books
 tableRows.addEventListener("click", (event) => {
