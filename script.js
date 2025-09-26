@@ -90,7 +90,8 @@ const cancelNewBookDialog = document.querySelector("button.cancel-new-book");
 
 addBookButton.addEventListener("click", () => newBookDialog.showModal());
 
-confirmNewBookDialog.addEventListener("click", (event) => {
+confirmNewBookDialog.addEventListener("submit", (event) => {
+  event.preventDefault();
   const newBookTitle = newBookDialog.querySelector("#title");
   const newBookAuthor = newBookDialog.querySelector("#author");
   const newBookPages = newBookDialog.querySelector("#pages");
@@ -99,7 +100,6 @@ confirmNewBookDialog.addEventListener("click", (event) => {
   displayLibrary();
   newBookForm.reset();
   newBookDialog.close();
-  event.preventDefault();
 });
 cancelNewBookDialog.addEventListener("click", () => {
   newBookDialog.close();

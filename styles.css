@@ -10,6 +10,7 @@
 
 h1 {
   font-size: 3rem;
+  text-shadow: var(--light-shadow);
 }
 
 body {
@@ -104,7 +105,8 @@ button:hover {
   gap: 8px;
 }
 
-.new-book input[type="text"] {
+.new-book input[type="text"],
+.new-book input[type="number"] {
   background-color: var(--book-color);
   height: 28px;
   width: 400px;
