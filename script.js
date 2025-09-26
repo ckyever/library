@@ -38,7 +38,7 @@ function displayLibrary() {
     row.appendChild(pages);
 
     const isRead = document.createElement("td");
-    isRead.textContent = book.isRead ? "Yes" : "No";
+    isRead.textContent = book.isRead ? "Read" : "Not Read";
     row.appendChild(isRead);
 
     const deleteCell = document.createElement("td");
