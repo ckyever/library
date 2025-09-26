@@ -41,9 +41,11 @@ function displayLibrary() {
     author.textContent = `by ${book.author}`;
     row.appendChild(author);
 
-    const pages = document.createElement("td");
-    pages.textContent = `Pages - ${book.pages}`;
-    row.appendChild(pages);
+    if (book.pages) {
+      const pages = document.createElement("td");
+      pages.textContent = `Pages - ${book.pages}`;
+      row.appendChild(pages);
+    }
 
     const statusCell = document.createElement("td");
     const statusButton = document.createElement("button");
