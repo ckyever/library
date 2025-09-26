@@ -80,8 +80,7 @@ confirmNewBookDialog.addEventListener("click", (event) => {
   const newBookAuthor = newBookDialog.querySelector("#author");
   const newBookPages = newBookDialog.querySelector("#pages");
   const newBookFinished = newBookDialog.querySelector("#finished-reading");
-  const isFinished = newBookFinished.value === "true"
-  addBookToLibrary(newBookTitle.value, newBookAuthor.value, newBookPages.value, isFinished);
+  addBookToLibrary(newBookTitle.value, newBookAuthor.value, newBookPages.value, newBookFinished.checked);
   displayLibrary();
   newBookForm.reset();
   newBookDialog.close();
