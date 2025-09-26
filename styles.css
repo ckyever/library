@@ -3,6 +3,8 @@
   --secondary-color: #FFFFFF;
   --book-color: #F0EEF1;
   --book-text-color: #000000;
+  --read-status-finished: #C2E1C1;
+  --read-status-unfinished: #FAA0A0;
   --light-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -68,6 +70,18 @@ button:hover {
   width: 34px;
   background: none;
   border: none;
+}
+
+.is-read {
+  background-color: var(--read-status-unfinished);
+  padding: 4px;
+  border: none;
+  font-size: 0.8rem;
+  border-radius: 4px;
+}
+
+.is-read.finished {
+  background-color: var(--read-status-finished);
 }
 
 /* Dialog styling below */

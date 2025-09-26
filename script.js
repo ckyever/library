@@ -18,7 +18,7 @@ function addBookToLibrary(title, author, pages, isRead) {
 }
 
 function getReadStatusText(status) {
-  return status ? "Read" : "Not Read";
+  return status ? "Finished" : "Unfinished";
 }
 
 const tableRows = document.querySelector(".bookshelf");
@@ -48,7 +48,8 @@ function displayLibrary() {
     const statusCell = document.createElement("td");
     const statusButton = document.createElement("button");
     statusButton.type = "button";
-    statusButton.classList = "is-read";
+    const buttonStyle = book.isRead ? "finished" : "unfinished";
+    statusButton.classList = "is-read " + buttonStyle;
     statusButton.textContent = getReadStatusText(book.isRead);
     statusCell.appendChild(statusButton);
     row.appendChild(statusCell);
@@ -107,7 +108,6 @@ cancelNewBookDialog.addEventListener("click", () => {
 
 // Handle deletion of books
 tableRows.addEventListener("click", (event) => {
-  console.log(event.target);
   let libraryIndex;
   if (event.target.matches(".delete-icon")) {
     const rowToDelete = event.target.closest("tr");
@@ -119,5 +119,6 @@ tableRows.addEventListener("click", (event) => {
     libraryIndex = myLibrary.findIndex(book => book.id == rowToToggleStatus.id);
     myLibrary[libraryIndex].toggleIsRead();
     event.target.textContent = getReadStatusText(myLibrary[libraryIndex].isRead);
+    event.target.classList.toggle("finished");
   }
 });
