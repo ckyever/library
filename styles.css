@@ -40,12 +40,11 @@ button:hover {
 }
 
 .bookshelf {
-  width: 80vw;
+  width: max-content;
   padding: 28px;
   display: grid;
-  grid-template-columns: repeat(4, auto);
+  grid-template-columns: repeat(4, 216px);
   gap: 16px;
-  justify-content: center;
 }
 
 .book {
