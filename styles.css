@@ -22,6 +22,20 @@ body {
   align-items: center;
 }
 
+.add-book {
+  font-size: 1.4rem;
+  font-weight: 600;
+  border: none;
+  padding: 12px;
+  border-radius: 16px;
+  background: var(--primary-color);
+}
+
+.add-book:hover {
+  filter: brightness(0.9);
+  cursor: pointer;  
+}
+
 .bookshelf {
   width: 80vw;
   padding: 28px;
