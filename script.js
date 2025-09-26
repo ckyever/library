@@ -13,11 +13,12 @@ function addBookToLibrary(title, author, pages, isRead) {
   myLibrary.push(newBook);
 }
 
+const table = document.querySelector(".bookshelf");
+const tableRows = table.querySelector("tbody");
+
 function displayLibrary() {
-  const table = document.querySelector(".bookshelf");
 
   // Clear out all rows first in case we are refreshing our table
-  const tableRows = table.querySelector("tbody");
   tableRows.innerHTML = "";
 
   myLibrary.forEach(book => {
@@ -39,6 +40,20 @@ function displayLibrary() {
     const isRead = document.createElement("td");
     isRead.textContent = book.isRead ? "Yes" : "No";
     row.appendChild(isRead);
+
+    isRead.textContent = book.isRead ? "Yes" : "No";
+    row.appendChild(isRead);
+
+    const deleteCell = document.createElement("td");
+    const deleteButton = document.createElement("button");
+    deleteButton.type = "button"
+    deleteButton.classList = "delete";
+    const deleteIcon = document.createElement("img");
+    deleteIcon.src = "assets/trash-can-outline.svg";
+    deleteIcon.alt = "outline of a trash can";
+    deleteButton.appendChild(deleteIcon);
+    deleteCell.appendChild(deleteButton);
+    row.appendChild(deleteCell);
 
     tableRows.appendChild(row);
   })
@@ -78,3 +93,13 @@ confirmNewBookDialog.addEventListener("click", (event) => {
   event.preventDefault();
 });
 cancelNewBookDialog.addEventListener("click", () => newBookDialog.close());
+
+// Handle deletion of books
+tableRows.addEventListener("click", (event) => {
+  if (event.target.matches(".delete")) {
+    const rowToDelete = event.target.closest("tr");
+    const libraryIndex = myLibrary.findIndex(book => book.id == rowToDelete.id);
+    rowToDelete.remove();
+    myLibrary.splice(libraryIndex, 1);
+  }
+})
