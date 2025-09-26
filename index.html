@@ -17,24 +17,24 @@
       </table>
       <dialog class="new-book">
         <form class="new-book-form">
+          <h2>New Book</h2>
           <div>
-            <label for="title">Title</label>
-            <input id="title" type="text" required>
+            <input id="title" type="text" required placeholder="Title">
           </div>
           <div>
-            <label for="author">Author</label>
-            <input id="author" type="text" required>
+            <input id="author" type="text" required placeholder="Author">
           </div>
           <div>
-            <label for="pages">Pages</label>
-            <input id="pages" type="text">
+            <input id="pages" type="text" placeholder="Pages">
           </div>
           <div>
             <label for="finished-reading">Have you read it?</label>
             <input id="finished-reading" type="checkbox" value="true">
           </div>
-          <button type="submit" autofocus class="confirm-new-book">Confirm</button>
-          <button type="button" autofocus class="cancel-new-book">Cancel</button>
+          <div>
+            <button type="submit" autofocus class="confirm-new-book">Confirm</button>
+            <button type="button" autofocus class="cancel-new-book">Cancel</button>
+          </div>
         </form>
       </dialog>
     </div>
