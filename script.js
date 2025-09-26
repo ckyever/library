@@ -41,9 +41,6 @@ function displayLibrary() {
     isRead.textContent = book.isRead ? "Yes" : "No";
     row.appendChild(isRead);
 
-    isRead.textContent = book.isRead ? "Yes" : "No";
-    row.appendChild(isRead);
-
     const deleteCell = document.createElement("td");
     const deleteButton = document.createElement("button");
     deleteButton.type = "button"
@@ -82,13 +79,14 @@ confirmNewBookDialog.addEventListener("click", (event) => {
   const newBookAuthor = newBookDialog.querySelector("#author");
   const newBookPages = newBookDialog.querySelector("#pages");
   const newBookFinished = newBookDialog.querySelector("#finished-reading");
-  addBookToLibrary(newBookTitle.value, newBookAuthor.value, newBookPages.value, newBookFinished.value);
+  const isFinished = newBookFinished.value === "true"
+  addBookToLibrary(newBookTitle.value, newBookAuthor.value, newBookPages.value, isFinished);
   displayLibrary();
 
   newBookTitle.value = null;
   newBookAuthor.value = null;
   newBookPages.value = null;
-  newBookFinished.value = true;
+  newBookFinished.value = false;
   newBookDialog.close();
   event.preventDefault();
 });
