@@ -16,6 +16,10 @@ function addBookToLibrary(title, author, pages, isRead) {
 function displayLibrary() {
   const table = document.querySelector(".bookshelf");
 
+  // Clear out all rows first in case we are refreshing our table
+  const tableRows = table.querySelector("tbody");
+  tableRows.innerHTML = "";
+
   myLibrary.forEach(book => {
     const row = document.createElement("tr");
 
@@ -39,14 +43,41 @@ function displayLibrary() {
     id.textContent = book.id;
     row.appendChild(id);
 
-    table.appendChild(row);
+    tableRows.appendChild(row);
   })
 }
 
+// Placeholder books
 addBookToLibrary("East of Eden", "John Steinbeck", 730, true);
 addBookToLibrary("Crime and Punishment", "Fyodor Dostoevsky", 800, false);
 addBookToLibrary("Atomic Habits", "James Clear", 306, true);
 addBookToLibrary("Crying in H Mart", "Michelle Zauner", 243, true);
 addBookToLibrary("The Anthropocene Reviewed", "John Green", 304, false);
 
+// Add table representing library on the web page
 displayLibrary();
+
+// Handle dialog to add new books
+const addBookButton = document.querySelector("button.add-book");
+const newBookDialog = document.querySelector("dialog.new-book");
+const confirmNewBookDialog = document.querySelector("button.confirm-new-book");
+const cancelNewBookDialog = document.querySelector("button.cancel-new-book");
+
+addBookButton.addEventListener("click", () => newBookDialog.showModal());
+
+confirmNewBookDialog.addEventListener("click", (event) => {
+  const newBookTitle = newBookDialog.querySelector("#title");
+  const newBookAuthor = newBookDialog.querySelector("#author");
+  const newBookPages = newBookDialog.querySelector("#pages");
+  const newBookFinished = newBookDialog.querySelector("#finished-reading");
+  addBookToLibrary(newBookTitle.value, newBookAuthor.value, newBookPages.value, newBookFinished.value);
+  displayLibrary();
+
+  newBookTitle.value = null;
+  newBookAuthor.value = null;
+  newBookPages.value = null;
+  newBookFinished.value = true;
+  newBookDialog.close();
+  event.preventDefault();
+});
+cancelNewBookDialog.addEventListener("click", () => newBookDialog.close());

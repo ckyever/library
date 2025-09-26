@@ -10,14 +10,44 @@
     <div class="container">
       <h1>Library</h1>
       <table class="bookshelf">
-        <tr>
-          <th>Title</th>
-          <th>Author</th>
-          <th>Pages</th>
-          <th>Read</th>
-          <th>ID</th>
-        </tr>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Pages</th>
+            <th>Finished Reading</th>
+            <th>ID</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
       </table>
+      <button type="button" class="add-book">Add Book</button>
+      <dialog class="new-book">
+        <form class="new-book-form">
+          <div>
+            <label for="title">Title</label>
+            <input id="title" type="text" required>
+          </div>
+          <div>
+            <label for="author">Author</label>
+            <input id="author" type="text" required>
+          </div>
+          <div>
+            <label for="pages">Pages</label>
+            <input id="pages" type="text">
+          </div>
+          <div>
+            <label for="finished-reading">Finished Reading</label>
+            <select id="finished-reading">
+              <option value="true" selected>Yes</option>
+              <option value="false">No</option>
+            </select>
+          </div>
+          <button type="submit" autofocus class="confirm-new-book">Confirm</button>
+          <button type="button" autofocus class="cancel-new-book">Cancel</button>
+        </form>
+      </dialog>
     </div>
   </body>
 </html>
