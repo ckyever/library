@@ -54,12 +54,14 @@ function displayLibrary() {
     row.appendChild(statusCell);
 
     const deleteCell = document.createElement("td");
+    deleteCell.classList = "delete-cell";
     const deleteButton = document.createElement("button");
     deleteButton.type = "button"
     deleteButton.classList = "delete";
     const deleteIcon = document.createElement("img");
     deleteIcon.src = "assets/trash-can-outline.svg";
     deleteIcon.alt = "outline of a trash can";
+    deleteIcon.classList = "delete-icon";
     deleteButton.appendChild(deleteIcon);
     deleteCell.appendChild(deleteButton);
     row.appendChild(deleteCell);
@@ -105,8 +107,9 @@ cancelNewBookDialog.addEventListener("click", () => {
 
 // Handle deletion of books
 tableRows.addEventListener("click", (event) => {
+  console.log(event.target);
   let libraryIndex;
-  if (event.target.matches("button.delete")) {
+  if (event.target.matches(".delete-icon")) {
     const rowToDelete = event.target.closest("tr");
     libraryIndex = myLibrary.findIndex(book => book.id == rowToDelete.id);
     rowToDelete.remove();
@@ -117,4 +120,4 @@ tableRows.addEventListener("click", (event) => {
     myLibrary[libraryIndex].toggleIsRead();
     event.target.textContent = getReadStatusText(myLibrary[libraryIndex].isRead);
   }
-})
+});

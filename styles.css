@@ -55,6 +55,19 @@ button:hover {
   width: 200px;
   height: 200px;
   box-shadow: var(--light-shadow);
+  position: relative;
+}
+
+.delete-cell {
+  position: absolute;
+  top: 4px;
+  right: 0;
+}
+
+.delete {
+  width: 34px;
+  background: none;
+  border: none;
 }
 
 /* Dialog styling below */
