@@ -22,6 +22,7 @@ function displayLibrary() {
 
   myLibrary.forEach(book => {
     const row = document.createElement("tr");
+    row.id = book.id;
 
     const title = document.createElement("td");
     title.textContent = book.title;
@@ -38,10 +39,6 @@ function displayLibrary() {
     const isRead = document.createElement("td");
     isRead.textContent = book.isRead ? "Yes" : "No";
     row.appendChild(isRead);
-
-    const id = document.createElement("td");
-    id.textContent = book.id;
-    row.appendChild(id);
 
     tableRows.appendChild(row);
   })
